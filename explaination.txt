@@ -1,0 +1,80 @@
+#include <iostream>
+#include <fstream>
+#include <map>
+#include <string>
+
+int main() {
+    std::map<std::string, int> attendance; // Map to store registration numbers and attendance
+
+
+The code begins by including the necessary header files and declaring a std::map named attendance to store the registration numbers and their attendance counts.
+
+
+    std::ifstream existingOutputFile("output.txt");
+    if (existingOutputFile) {
+        std::string regNumber;
+        int count;
+
+        // Read the existing attendance from the output file
+        while (existingOutputFile >> regNumber >> count) {
+            attendance[regNumber] = count;
+        }
+
+        // Close the existing output file
+        existingOutputFile.close();
+    }
+
+
+The code opens the existing output file (output.txt) in an input file stream (std::ifstream). If the file exists, it proceeds to read the registration numbers and their corresponding counts from the file. The while loop iterates until it successfully reads both the registration number and count from the file. The attendance counts are then stored in the attendance map with the registration numbers as keys.
+
+
+    std::ifstream inputFile("input.txt");
+    if (!inputFile) {
+        std::cerr << "Failed to open the input file." << std::endl;
+        return 1;
+    }
+
+
+Next, the code attempts to open the input file (input.txt) in an input file stream (std::ifstream). If the file fails to open, an error message is displayed, and the program returns with a non-zero value to indicate an error.
+
+
+    std::string regNumber;
+    while (inputFile >> regNumber) {
+        attendance[regNumber]++; // Increment attendance for the registration number
+    }
+
+    // Close the input file
+    inputFile.close();
+
+
+The code then proceeds to read the registration numbers from the input file. The while loop reads each registration number (regNumber) from the file until there are no more registration numbers left. For each registration number, it increments the attendance count in the attendance map using the attendance[regNumber]++ statement.
+
+After processing all the registration numbers, the input file is closed.
+
+
+    std::ofstream outputFile("output.txt");
+    if (!outputFile) {
+        std::cerr << "Failed to open the output file." << std::endl;
+        return 1;
+    }
+
+    for (const auto& entry : attendance) {
+        outputFile << entry.first << " " << entry.second << std::endl;
+    }
+
+    // Close the output file
+    outputFile.close();
+
+    std::cout << "Attendance has been updated in the output file." << std::endl;
+
+    return 0;
+}
+
+
+Next, the code opens the output file (output.txt) in an output file stream (std::ofstream). If the file fails to open, an error message is displayed, and the program returns with a non-zero value to indicate an error.
+
+The code then iterates over each entry in the attendance map using a range-based for loop. It writes each registration number (entry.first) followed by its attendance count (entry.second) to the output file, separated by a space. Each entry is written on a new line using std::endl.
+
+Finally, the output file is closed, and a message is displayed to indicate that the attendance has been updated in the output file.
+
+The program concludes by returning 0 to indicate successful execution.

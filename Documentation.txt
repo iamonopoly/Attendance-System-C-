@@ -1,0 +1,57 @@
+Code Documentation:
+Overview:
+This C++ program reads registration numbers from an input file (input.txt) and updates the attendance count for each registration number. It maintains the attendance data in a map (attendance), where each registration number is associated with its attendance count. The program then writes the updated attendance to an output file (output.txt).
+
+Libraries Used:
+iostream: Provides input/output stream functionality.
+fstream: Provides file stream functionality for file input/output operations.
+map: Provides the std::map container for storing key-value pairs.
+string: Provides string-related operations and functionalities.
+Main Function:
+The main function is the entry point of the program. It follows the following steps:
+
+Declare a map attendance to store registration numbers and their attendance count.
+
+Open the existing output file (output.txt) in an input file stream (std::ifstream).
+
+If the file exists, read the existing attendance from the file and update the attendance map accordingly.
+Each line in the file is expected to contain a registration number followed by its attendance count.
+Close the input file after reading the existing attendance.
+Open the input file (input.txt) in an input file stream (std::ifstream).
+
+If the input file fails to open, display an error message and return 1 to indicate an error.
+Read registration numbers from the input file and update the attendance count.
+
+Each registration number is read from a line in the input file.
+For each registration number, increment the attendance count in the attendance map.
+Close the input file after reading all the registration numbers.
+
+Open the output file (output.txt) in an output file stream (std::ofstream).
+
+If the output file fails to open, display an error message and return 1 to indicate an error.
+Write the updated attendance to the output file.
+
+Iterate over each entry in the attendance map.
+Write each registration number followed by its attendance count to the output file on a new line.
+Close the output file after writing the attendance data.
+
+Display a message indicating that the attendance has been updated in the output file.
+
+Return 0 to indicate successful execution of the program.
+
+File Operations:
+The program uses std::ifstream to open and read from files (input.txt, output.txt) and std::ofstream to open and write to the output file (output.txt).
+It checks whether the files are successfully opened and displays an error message if they fail to open.
+The input file is read using the >> operator to extract registration numbers from each line.
+The output file is written using the << operator to output the registration numbers and their attendance count.
+Map Usage:
+The attendance map is used to store the registration numbers as keys and their attendance count as values.
+If an existing output file is read, the attendance count for each registration number is retrieved from the file and stored in the map.
+When reading the input file, the attendance count for each registration number is incremented in the map using the attendance[regNumber]++; statement.
+Error Handling:
+The program checks whether the input and output files are successfully opened. If not, it displays an error message and returns 1 to indicate an error.
+Console Output:
+The program displays a message indicating that the attendance has been updated in the output file (std::cout << "Attendance has been updated in the output file." << std::endl;).
+Return Value:
+The main function returns 0 to indicate successful execution of the program.
+That concludes the documentation for the provided code.
